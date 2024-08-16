@@ -89,6 +89,7 @@ function displayResults(results) {
                     <p><strong>Garage:</strong> ${vehicle.garage}</p>
                     <p><strong>Remarks:</strong> ${vehicle.remarks}</p>
                     <button onclick="editVehicle(${index})">Edit</button>
+                    <button onclick="deleteVehicle(${index})">Delete</button>
                     <hr>
                 </div>
             `;
@@ -120,4 +121,12 @@ function editVehicle(index) {
     document.getElementById('remarks').value = vehicle.remarks;
 
     editIndex = index;  // Store the index of the current edit
+}
+
+function deleteVehicle(index) {
+    let vehicles = JSON.parse(localStorage.getItem('vehicles')) || [];
+    vehicles.splice(index, 1);  // Remove the vehicle at the specified index
+    localStorage.setItem('vehicles', JSON.stringify(vehicles));
+    alert('Vehicle data deleted successfully!');
+    displayResults(vehicles);  // Display updated list
 }
