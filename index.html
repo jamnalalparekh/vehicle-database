@@ -3,86 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seized Vehicle Database</title>
+    <title>Vehicle Database</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.6/dist/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-
 </head>
 <body>
-    <header>
-        <h1>Seized Vehicle Database</h1>
-        <button id="exportBtn">Export Data</button>
-    </header>
-    
-    <main>
+    <div class="container">
+        <h1>Vehicle Database</h1>
         <form id="vehicleForm">
-            <div class="form-container">
-                <div class="form-column">
-                    <h2>Customer Details</h2>
-                    <label for="customerName">Customer Name:</label>
-                    <input type="text" id="customerName" required>
-                    
-                    <label for="mobileNo">Mobile No:</label>
-                    <input type="text" id="mobileNo" required>
-                    
-                    <label for="cityVillage">City/Village:</label>
-                    <input type="text" id="cityVillage" required>
-                    
-                    <label for="agreementNumber">Agreement No:</label>
-                    <input type="text" id="agreementNumber" required>
-                    
-                    <label for="loanDue">Loan Due (₹):</label>
-                    <input type="number" id="loanDue" required>
-                </div>
+            <div class="form-group">
+                <h2>Customer Details</h2>
+                <label for="customerName">Customer Name:</label>
+                <input type="text" id="customerName" name="customerName" required>
 
-                <div class="form-column">
-                    <h2>Vehicle Details</h2>
-                    <label for="vehicleNumber">Vehicle No:</label>
-                    <input type="text" id="vehicleNumber" required>
-                    
-                    <label for="seizeDate">Seize Date (DDMMYYYY):</label>
-                    <input type="text" id="seizeDate" required pattern="\d{2}\d{2}\d{4}" placeholder="DDMMYYYY">
-                    
-                    <label for="vehicleModel">Vehicle Model:</label>
-                    <input type="text" id="vehicleModel" required>
-                    
-                    <label for="colour">Colour:</label>
-                    <input type="text" id="colour" required>
-                    
-                    <label for="yearManufactured">Year of Manufacture:</label>
-                    <input type="number" id="yearManufactured" required>
-                    
-                    <label for="vehicleValue">Vehicle Value (₹):</label>
-                    <input type="number" id="vehicleValue" required>
-                    
-                    <label for="saleValue">Sale Value (₹):</label>
-                    <input type="number" id="saleValue" required>
-                    
-                    <label for="garage">Garage:</label>
-                    <input type="text" id="garage" required>
-                    
-                    <label for="remarks">Remarks:</label>
-                    <textarea id="remarks" rows="4"></textarea>
-                </div>
+                <label for="mobileNo">Mobile No:</label>
+                <input type="text" id="mobileNo" name="mobileNo" required>
+
+                <label for="cityVillage">City/Village:</label>
+                <input type="text" id="cityVillage" name="cityVillage" required>
+
+                <label for="agreementNumber">Agreement No:</label>
+                <input type="text" id="agreementNumber" name="agreementNumber" required>
+
+                <label for="loanDue">Loan Due:</label>
+                <input type="number" id="loanDue" name="loanDue" required>
             </div>
-            
-            <button type="submit">Save</button>
-        </form>
-        
-        <section class="search-section">
-            <h2>Search Vehicle</h2>
-            <input type="text" id="searchQuery" placeholder="Enter vehicle number or customer name">
-            <button onclick="searchVehicle()">Search</button>
-        </section>
-        
-        <div class="result" id="result"></div>
-    </main>
-    
-    <footer>
-        <p>&copy; 2024 Seized Vehicle Database</p>
-    </footer>
+            <div class="form-group">
+                <h2>Vehicle Details</h2>
+                <label for="vehicleNumber">Vehicle No:</label>
+                <input type="text" id="vehicleNumber" name="vehicleNumber" required>
 
+                <label for="seizeDate">Seize Date:</label>
+                <input type="text" id="seizeDate" name="seizeDate" placeholder="ddmmyyyy" required>
+
+                <label for="vehicleModel">Vehicle Model:</label>
+                <input type="text" id="vehicleModel" name="vehicleModel" required>
+
+                <label for="colour">Colour:</label>
+                <input type="text" id="colour" name="colour" required>
+
+                <label for="yearManufactured">Year of Manufacture:</label>
+                <input type="number" id="yearManufactured" name="yearManufactured" required>
+
+                <label for="vehicleValue">Vehicle Value:</label>
+                <input type="number" id="vehicleValue" name="vehicleValue" required>
+
+                <label for="saleValue">Sale Value:</label>
+                <input type="number" id="saleValue" name="saleValue" required>
+
+                <label for="garage">Garage:</label>
+                <input type="text" id="garage" name="garage" required>
+
+                <label for="remarks">Remarks:</label>
+                <input type="text" id="remarks" name="remarks">
+            </div>
+            <button type="submit">Save Data</button>
+        </form>
+        <button id="exportBtn">Export Data</button>
+        <table id="vehicleTable">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Mobile No</th>
+                    <th>City/Village</th>
+                    <th>Agreement No</th>
+                    <th>Loan Due</th>
+                    <th>Vehicle No</th>
+                    <th>Seize Date</th>
+                    <th>Vehicle Model</th>
+                    <th>Colour</th>
+                    <th>Year of Manufacture</th>
+                    <th>Vehicle Value</th>
+                    <th>Sale Value</th>
+                    <th>Garage</th>
+                    <th>Remarks</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data rows will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <script src="app.js"></script>
     <script src="export.js"></script>
 </body>
