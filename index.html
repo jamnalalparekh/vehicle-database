@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seized Vehicle Database</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        form { margin: 20px 0; }
+        label { display: block; margin-bottom: 5px; }
+        input, textarea { margin-bottom: 10px; padding: 5px; width: 100%; }
+        button { padding: 10px 20px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Seized Vehicle Database</h1>
+    
+    <form id="vehicleForm">
+        <label for="vehicleNumber">Vehicle Number:</label>
+        <input type="text" id="vehicleNumber" required>
+        
+        <label for="ownerName">Owner Name:</label>
+        <input type="text" id="ownerName" required>
+        
+        <label for="seizeDate">Seize Date:</label>
+        <input type="date" id="seizeDate" required>
+
+        <label for="yearManufactured">Year of Manufacture:</label>
+        <input type="number" id="yearManufactured" required>
+
+        <label for="vehicleValue">Vehicle Value (₹):</label>
+        <input type="number" id="vehicleValue" required>
+
+        <label for="agreementNumber">Agreement Number:</label>
+        <input type="text" id="agreementNumber" required>
+
+        <label for="loanDue">Loan Due (₹):</label>
+        <input type="number" id="loanDue" required>
+
+        <label for="remarks">Remarks:</label>
+        <textarea id="remarks" rows="4"></textarea>
+
+        <button type="submit">Add Vehicle</button>
+    </form>
+    
+    <h2>Search Vehicle</h2>
+    <input type="text" id="searchQuery" placeholder="Enter vehicle number or owner name">
+    <button onclick="searchVehicle()">Search</button>
+    
+    <div class="result" id="result"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
