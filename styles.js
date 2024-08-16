@@ -1,131 +1,87 @@
-/* Reset some default styles */
-body, h1, h2, p, button {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Basic styling for body */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
-}
-
-/* Centering and styling the container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* Styling headers */
-h1 {
+/* Header styling with gradient and shadow */
+header {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    padding: 15px;
     text-align: center;
-    color: #007bff;
-    margin-bottom: 20px;
-    font-size: 2.5em;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Form styling */
-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-/* Form groups */
-.form-group {
-    flex: 1;
-    min-width: 300px;
-}
-
-/* Form labels and inputs */
-form label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
-}
-
-form input, form select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    margin-bottom: 16px;
-}
-
-/* Button styling */
-button {
-    background-color: #007bff;
-    color: #fff;
+/* Button styling with rounded corners and hover animation */
+header button,
+.form-container button,
+.search-section button {
+    background-color: #28a745;
+    color: white;
     border: none;
-    padding: 12px 20px;
+    padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s ease;
 }
 
-button:hover {
-    background-color: #0056b3;
+header button:hover,
+.form-container button:hover,
+.search-section button:hover {
+    transform: scale(1.05);
+    background-color: #218838;
 }
 
-/* Table styling */
-table {
+/* Input and form container styling */
+input, textarea {
     width: 100%;
-    border-collapse: collapse;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Main content styling */
+main {
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
 
-table th, table td {
-    padding: 12px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-table th {
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-}
-
-/* Table data */
-table td {
-    font-size: 14px;
-}
-
-/* Actions column */
-table .actions {
+/* Footer styling */
+footer {
+    background-color: #0056b3;
+    color: white;
     text-align: center;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
-/* Responsive Design */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    form {
-        flex-direction: column;
+    .form-container {
+        grid-template-columns: 1fr;
     }
 
-    form input, form select {
+    header button {
         width: 100%;
+        margin-top: 10px;
     }
 }
 
-@media (max-width: 480px) {
-    .container {
-        padding: 10px;
-    }
-
-    button {
-        padding: 10px;
-        font-size: 14px;
-    }
+/* Search result item styling */
+.result-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
 }
