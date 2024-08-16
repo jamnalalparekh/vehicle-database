@@ -1,3 +1,13 @@
+/* Global settings */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background-color: #F8F8FF;
+}
+
 /* Header styling with new color scheme */
 header {
     background: #483D8B;
@@ -31,7 +41,7 @@ header button:hover,
     background-color: #2E8B57;
 }
 
-/* Input and form container styling with improved layout */
+/* Input and form container styling */
 input, textarea {
     width: 100%;
     padding: 10px;
@@ -42,6 +52,7 @@ input, textarea {
     background-color: #F8F8FF;
 }
 
+/* Form container styling with improved layout */
 .form-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -51,6 +62,7 @@ input, textarea {
 
 /* Main content styling with updated background and color */
 main {
+    flex: 1; /* Ensures main content grows to fill space */
     padding: 20px;
     background-color: #F8F8FF;
     border-radius: 8px;
@@ -59,16 +71,26 @@ main {
     color: #333333;
 }
 
-/* Footer styling with consistent theme */
+/* Footer styling */
 footer {
     background-color: #483D8B;
     color: white;
     text-align: center;
     padding: 10px;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
     border-radius: 0 0 8px 8px;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Adds space between content and footer */
+}
+
+/* Search result item styling with background color */
+.result-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    color: #333333;
 }
 
 /* Responsive adjustments */
@@ -81,14 +103,4 @@ footer {
         width: 100%;
         margin-top: 10px;
     }
-}
-
-/* Search result item styling with background color */
-.result-item {
-    background-color: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
-    color: #333333;
 }
