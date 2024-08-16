@@ -1,26 +1,94 @@
-/* Add this to your existing styles.css */
-
+/* Header styling with new color scheme */
 header {
-    background-color: #007bff;
+    background: #483D8B;
     color: white;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
-header button {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background-color: #28a745;
+/* Button styling with new accent color */
+header button,
+.form-container button,
+.search-section button {
+    background-color: #3CB371;
     color: white;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
+    transition: transform 0.2s ease;
 }
 
-header button:hover {
-    background-color: #218838;
+header button:hover,
+.form-container button:hover,
+.search-section button:hover {
+    transform: scale(1.05);
+    background-color: #2E8B57;
+}
+
+/* Input and form container styling with improved layout */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #F8F8FF;
+}
+
+.form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Main content styling with updated background and color */
+main {
+    padding: 20px;
+    background-color: #F8F8FF;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    color: #333333;
+}
+
+/* Footer styling with consistent theme */
+footer {
+    background-color: #483D8B;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-container {
+        grid-template-columns: 1fr;
+    }
+
+    header button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+/* Search result item styling with background color */
+.result-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    color: #333333;
 }
