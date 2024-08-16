@@ -1,132 +1,84 @@
-let editIndex = -1;  // Variable to store the index of the current edit
-
-document.getElementById('vehicleForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    // Get form values (Customer Details)
-    const customerName = document.getElementById('customerName').value;
-    const mobileNo = document.getElementById('mobileNo').value;
-    const cityVillage = document.getElementById('cityVillage').value;
-    const agreementNumber = document.getElementById('agreementNumber').value;
-    const loanDue = document.getElementById('loanDue').value;
-
-    // Get form values (Vehicle Details)
-    const vehicleNumber = document.getElementById('vehicleNumber').value;
-    const seizeDate = document.getElementById('seizeDate').value;
-    const vehicleModel = document.getElementById('vehicleModel').value;
-    const colour = document.getElementById('colour').value;
-    const yearManufactured = document.getElementById('yearManufactured').value;
-    const vehicleValue = document.getElementById('vehicleValue').value;
-    const saleValue = document.getElementById('saleValue').value;
-    const garage = document.getElementById('garage').value;
-    const remarks = document.getElementById('remarks').value;
-
-    // Create vehicle object
-    const vehicle = {
-        customerName,
-        mobileNo,
-        cityVillage,
-        agreementNumber,
-        loanDue,
-        vehicleNumber,
-        seizeDate,
-        vehicleModel,
-        colour,
-        yearManufactured,
-        vehicleValue,
-        saleValue,
-        garage,
-        remarks
-    };
-
-    let vehicles = JSON.parse(localStorage.getItem('vehicles')) || [];
-
-    if (editIndex === -1) {
-        // If not editing, add a new vehicle
-        vehicles.push(vehicle);
-    } else {
-        // If editing, update the existing vehicle
-        vehicles[editIndex] = vehicle;
-        editIndex = -1;
-    }
-
-    localStorage.setItem('vehicles', JSON.stringify(vehicles));
-    document.getElementById('vehicleForm').reset();
-    alert('Vehicle data saved successfully!');
-    displayResults(vehicles);  // Display updated list
-});
-
-function searchVehicle() {
-    const query = document.getElementById('searchQuery').value.toLowerCase();
-    const vehicles = JSON.parse(localStorage.getItem('vehicles')) || [];
-    const results = vehicles.filter((vehicle, index) => 
-        vehicle.vehicleNumber.toLowerCase().includes(query) || 
-        vehicle.customerName.toLowerCase().includes(query)
-    );
-
-    displayResults(results);
-}
-
-function displayResults(results) {
-    const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = '';
-    if (results.length > 0) {
-        results.forEach((vehicle, index) => {
-            resultDiv.innerHTML += `
-                <div>
-                    <p><strong>Customer Name:</strong> ${vehicle.customerName}</p>
-                    <p><strong>Mobile No:</strong> ${vehicle.mobileNo}</p>
-                    <p><strong>City/Village:</strong> ${vehicle.cityVillage}</p>
-                    <p><strong>Agreement No:</strong> ${vehicle.agreementNumber}</p>
-                    <p><strong>Loan Due (₹):</strong> ${vehicle.loanDue}</p>
-                    <p><strong>Vehicle No:</strong> ${vehicle.vehicleNumber}</p>
-                    <p><strong>Seize Date:</strong> ${vehicle.seizeDate}</p>
-                    <p><strong>Vehicle Model:</strong> ${vehicle.vehicleModel}</p>
-                    <p><strong>Colour:</strong> ${vehicle.colour}</p>
-                    <p><strong>Year of Manufacture:</strong> ${vehicle.yearManufactured}</p>
-                    <p><strong>Vehicle Value (₹):</strong> ${vehicle.vehicleValue}</p>
-                    <p><strong>Sale Value (₹):</strong> ${vehicle.saleValue}</p>
-                    <p><strong>Garage:</strong> ${vehicle.garage}</p>
-                    <p><strong>Remarks:</strong> ${vehicle.remarks}</p>
-                    <button onclick="editVehicle(${index})">Edit</button>
-                    <button onclick="deleteVehicle(${index})">Delete</button>
-                    <hr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seized Vehicle Database</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Seized Vehicle Database</h1>
+    </header>
+    
+    <main>
+        <form id="vehicleForm">
+            <div class="form-container">
+                <div class="form-column">
+                    <h2>Customer Details</h2>
+                    <label for="customerName">Customer Name:</label>
+                    <input type="text" id="customerName" required>
+                    
+                    <label for="mobileNo">Mobile No:</label>
+                    <input type="text" id="mobileNo" required>
+                    
+                    <label for="cityVillage">City/Village:</label>
+                    <input type="text" id="cityVillage" required>
+                    
+                    <label for="agreementNumber">Agreement No:</label>
+                    <input type="text" id="agreementNumber" required>
+                    
+                    <label for="loanDue">Loan Due (₹):</label>
+                    <input type="number" id="loanDue" required>
                 </div>
-            `;
-        });
-    } else {
-        resultDiv.innerHTML = '<p>No results found</p>';
-    }
-}
 
-function editVehicle(index) {
-    const vehicles = JSON.parse(localStorage.getItem('vehicles')) || [];
-    const vehicle = vehicles[index];
+                <div class="form-column">
+                    <h2>Vehicle Details</h2>
+                    <label for="vehicleNumber">Vehicle No:</label>
+                    <input type="text" id="vehicleNumber" required>
+                    
+                    <label for="seizeDate">Seize Date (DDMMYYYY):</label>
+                    <input type="text" id="seizeDate" required pattern="\d{2}\d{2}\d{4}" placeholder="DDMMYYYY">
+                    
+                    <label for="vehicleModel">Vehicle Model:</label>
+                    <input type="text" id="vehicleModel" required>
+                    
+                    <label for="colour">Colour:</label>
+                    <input type="text" id="colour" required>
+                    
+                    <label for="yearManufactured">Year of Manufacture:</label>
+                    <input type="number" id="yearManufactured" required>
+                    
+                    <label for="vehicleValue">Vehicle Value (₹):</label>
+                    <input type="number" id="vehicleValue" required>
+                    
+                    <label for="saleValue">Sale Value (₹):</label>
+                    <input type="number" id="saleValue" required>
+                    
+                    <label for="garage">Garage:</label>
+                    <input type="text" id="garage" required>
+                    
+                    <label for="remarks">Remarks:</label>
+                    <textarea id="remarks" rows="4"></textarea>
+                </div>
+            </div>
+            
+            <button type="submit">Save</button>
+        </form>
+        
+        <section class="search-section">
+            <h2>Search Vehicle</h2>
+            <input type="text" id="searchQuery" placeholder="Enter vehicle number or customer name">
+            <button onclick="searchVehicle()">Search</button>
+        </section>
+        
+        <div class="result" id="result"></div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Seized Vehicle Database</p>
+    </footer>
 
-    // Populate the form with the selected vehicle's data
-    document.getElementById('customerName').value = vehicle.customerName;
-    document.getElementById('mobileNo').value = vehicle.mobileNo;
-    document.getElementById('cityVillage').value = vehicle.cityVillage;
-    document.getElementById('agreementNumber').value = vehicle.agreementNumber;
-    document.getElementById('loanDue').value = vehicle.loanDue;
-
-    document.getElementById('vehicleNumber').value = vehicle.vehicleNumber;
-    document.getElementById('seizeDate').value = vehicle.seizeDate;
-    document.getElementById('vehicleModel').value = vehicle.vehicleModel;
-    document.getElementById('colour').value = vehicle.colour;
-    document.getElementById('yearManufactured').value = vehicle.yearManufactured;
-    document.getElementById('vehicleValue').value = vehicle.vehicleValue;
-    document.getElementById('saleValue').value = vehicle.saleValue;
-    document.getElementById('garage').value = vehicle.garage;
-    document.getElementById('remarks').value = vehicle.remarks;
-
-    editIndex = index;  // Store the index of the current edit
-}
-
-function deleteVehicle(index) {
-    let vehicles = JSON.parse(localStorage.getItem('vehicles')) || [];
-    vehicles.splice(index, 1);  // Remove the vehicle at the specified index
-    localStorage.setItem('vehicles', JSON.stringify(vehicles));
-    alert('Vehicle data deleted successfully!');
-    displayResults(vehicles);  // Display updated list
-}
+    <script src="app.js"></script>
+</body>
+</html>

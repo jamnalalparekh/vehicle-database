@@ -1,0 +1,109 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.form-column {
+    flex: 1;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.form-column h2 {
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.search-section {
+    margin-top: 20px;
+}
+
+.result {
+    margin-top: 20px;
+}
+
+.result div {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+.result button {
+    margin-right: 10px;
+}
+
+footer {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .form-container {
+        flex-direction: column;
+    }
+    .form-column {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
