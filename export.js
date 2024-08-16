@@ -5,7 +5,9 @@ document.getElementById('exportBtn').addEventListener('click', function() {
         return;
     }
 
-    let ws_data = [['Customer Name', 'Mobile No', 'City/Village', 'Agreement No', 'Loan Due', 'Vehicle No', 'Seize Date', 'Vehicle Model', 'Colour', 'Year of Manufacture', 'Vehicle Value', 'Sale Value', 'Garage', 'Remarks']];
+    let ws_data = [
+        ['Customer Name', 'Mobile No', 'City/Village', 'Agreement No', 'Loan Due', 'Vehicle No', 'Seize Date', 'Vehicle Model', 'Colour', 'Year of Manufacture', 'Vehicle Value', 'Sale Value', 'Garage', 'Remarks']
+    ];
 
     vehicles.forEach(vehicle => {
         ws_data.push([
